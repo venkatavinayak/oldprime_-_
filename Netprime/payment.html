@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+                
+
+
+
+
+
+        .payment-container {
+            text-align: center;
+            background-color: white;
+            padding: 70px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pay-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color:#ff0a93;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pay-button:hover {
+            background-color: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+
+
+
+
+<img class="pho" src="prime.png" style="width=400px;height:150px;position:absolute;display:flex;margin:-350px 0px 0px 80px;">
+
+</div>
+
+
+    <div class="payment-container">
+        <h2>Buy Premium</h2>
+        <p>Click the button below to make a payment</p>
+        <button class="pay-button" id="payButton">Pay Now</button>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('payButton').addEventListener('click', function () {
+            var options = {
+                "key": "rzp_test_CkjkBHB3TQcyK1", // Enter the Key ID generated from the Dashboard
+                "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+                "currency": "INR",
+                "name": "Netprime",
+                "description": "Subscription Payment",
+                "image": "https://example.com/your_logo",
+                "handler": function (response){
+                    alert('Payment Successful. Payment ID: ' + response.razorpay_payment_id);
+                    // Here you can handle the response after the payment is successful.
+                },
+                "prefill": {
+                    "name": "Atom Dino",
+                    "email": "Atom1@gmail.com",
+                    "contact": "+918374971945"
+                },
+                "notes": {
+                    "address": "Corporate Office"
+                },
+                "theme": {
+                    "color": "#ff0a93"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                alert('Payment Failed. Error: ' + response.error.description);
+                // Here you can handle the response after the payment fails.
+            });
+            rzp1.open();
+        });
+    </script>
+</body>
+</html>

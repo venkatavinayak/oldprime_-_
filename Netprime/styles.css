@@ -1,0 +1,46 @@
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.subscription-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: magenta;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Add to your existing styles.css */
+.subscribe-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: magenta;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.subscribe-button:hover {
+    background-color: darkmagenta;
+}

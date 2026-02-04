@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&vault=true"></script>
+</head>
+<style>
+
+</style>
+<body>
+    <div class="subscription-container">
+        <h2>Subscribe to Our Service</h2>
+        <p>Choose your subscription plan and support us:</p>
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                    'plan_id': 'P-3RX065706M3469222L5IFM4I' // Replace with your plan ID
+                });
+            },
+            onApprove: function(data, actions) {
+                alert('You have successfully created subscription ' + data.subscriptionID);
+                // Redirect to a thank you page or update your database with subscription info
+            }
+        }).render('#paypal-button-container'); // Display PayPal button
+    </script>
+</body>
+</html>
